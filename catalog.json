@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2026-10-17T11:57:44.688Z",
+  "generated_at": "2026-10-19T04:06:22.457Z",
   "applications": [
     {
       "id": "atlassian",
@@ -172,31 +172,8 @@
           "trust": "official",
           "recommended": true,
           "provider": "gmail",
-          "warning": "Needs an OAuth client from your own Google Cloud project (one-time); Hivemind cannot ship one. Google shows an 'unverified app' screen you click through.",
+          "warning": "Needs an OAuth client from your own Google Cloud project (one-time); Presidium cannot ship one. Google shows an 'unverified app' screen you click through.",
           "docs": "https://console.cloud.google.com/auth/clients"
-        }
-      ]
-    },
-    {
-      "id": "imagestudio",
-      "name": "Hivemind Image Studio",
-      "description": "Free, local image generation and editing on your own machine (FLUX.1 schnell, Qwen-Image, Real-ESRGAN, BiRefNet, Qwen2.5-VL; permissive licences only). Slow on a CPU, seconds on a GPU; quality is a setting, never a consequence. Settings → Tools installs and connects it; Illustrate, Upscale, Cut out, Variations and Describe run on it.",
-      "category": "design",
-      "docs": "https://github.com/gethivemind/hivemind-imagestudio",
-      "uses": [
-        "tools"
-      ],
-      "mechanisms": [
-        {
-          "id": "mcp",
-          "kind": "mcp",
-          "label": "MCP server on this machine",
-          "runs": "here",
-          "auth": "none",
-          "trust": "community",
-          "comingSoon": false,
-          "catalogId": "imagestudio",
-          "docs": "https://github.com/gethivemind/hivemind-imagestudio"
         }
       ]
     },
@@ -226,7 +203,7 @@
     {
       "id": "memory",
       "name": "Memory (knowledge graph)",
-      "description": "A small local knowledge graph agents can add facts to. Separate from Hivemind's vault; useful for scratch facts.",
+      "description": "A small local knowledge graph agents can add facts to. Separate from Presidium's vault; useful for scratch facts.",
       "category": "memory",
       "docs": "https://github.com/modelcontextprotocol/servers/tree/main/src/memory",
       "uses": [
@@ -312,6 +289,29 @@
           "comingSoon": false,
           "catalogId": "postgres",
           "docs": "https://github.com/modelcontextprotocol/servers-archived/tree/main/src/postgres"
+        }
+      ]
+    },
+    {
+      "id": "imagestudio",
+      "name": "Presidium Image Studio",
+      "description": "Free, local image generation and editing on your own machine (FLUX.1 schnell, Qwen-Image, Real-ESRGAN, BiRefNet, Qwen2.5-VL; permissive licences only). Slow on a CPU, seconds on a GPU; quality is a setting, never a consequence. Settings → Tools installs and connects it; Illustrate, Upscale, Cut out, Variations and Describe run on it.",
+      "category": "design",
+      "docs": "https://github.com/presidiumdev/presidium-imagestudio",
+      "uses": [
+        "tools"
+      ],
+      "mechanisms": [
+        {
+          "id": "mcp",
+          "kind": "mcp",
+          "label": "MCP server on this machine",
+          "runs": "here",
+          "auth": "none",
+          "trust": "community",
+          "comingSoon": false,
+          "catalogId": "imagestudio",
+          "docs": "https://github.com/presidiumdev/presidium-imagestudio"
         }
       ]
     },
@@ -457,9 +457,9 @@
     {
       "id": "machine",
       "name": "This machine",
-      "description": "The computer Hivemind runs on, as a connection (ADR-058): lock, sleep, open an allowed app or a web address, list and create folders under roots you choose, desktop notifications. No deleting, moving or reading files. Scope under Settings → Tools.",
+      "description": "The computer Presidium runs on, as a connection (ADR-058): lock, sleep, open an allowed app or a web address, list and create folders under roots you choose, desktop notifications. No deleting, moving or reading files. Scope under Settings → Tools.",
       "category": "ops",
-      "docs": "https://github.com/gethivemind/hivemind",
+      "docs": "https://github.com/presidiumdev/presidium",
       "uses": [
         "tools"
       ],
@@ -516,7 +516,7 @@
   "mcp": [
     {
       "id": "imagestudio",
-      "name": "Hivemind Image Studio",
+      "name": "Presidium Image Studio",
       "description": "Free, local image generation and editing on your own machine (FLUX.1 schnell, Qwen-Image, Real-ESRGAN, BiRefNet, Qwen2.5-VL; permissive licences only). Slow on a CPU, seconds on a GPU; quality is a setting, never a consequence. Settings → Tools installs and connects it; Illustrate, Upscale, Cut out, Variations and Describe run on it.",
       "category": "design",
       "transport": "stdio",
@@ -527,7 +527,7 @@
       "secrets": [],
       "managedTool": "imagestudio",
       "version": "0.3.8",
-      "docs": "https://github.com/gethivemind/hivemind-imagestudio",
+      "docs": "https://github.com/presidiumdev/presidium-imagestudio",
       "auth": "none",
       "writes": "writes finished images into its own output folder; downloads models only with your consent"
     },
@@ -662,7 +662,7 @@
     {
       "id": "memory",
       "name": "Memory (knowledge graph)",
-      "description": "A small local knowledge graph agents can add facts to. Separate from Hivemind's vault; useful for scratch facts.",
+      "description": "A small local knowledge graph agents can add facts to. Separate from Presidium's vault; useful for scratch facts.",
       "category": "memory",
       "transport": "stdio",
       "command": "npx",
@@ -908,7 +908,7 @@
         "long tasks"
       ],
       "verified": true,
-      "blurb": "Anthropic's terminal agent. Strong at multi-file changes, refactors and reviews; the reference agent for Hivemind's hooks.",
+      "blurb": "Anthropic's terminal agent. Strong at multi-file changes, refactors and reviews; the reference agent for Presidium's hooks.",
       "kind": "manifest",
       "invoke": {
         "command": "claude",
@@ -1471,7 +1471,7 @@
           "bootstrap": "inline",
           "chat": "Someone mentioned you in the thread \"{thread.title}\" (thread_id {threadId}). Reply there like a teammate, once, with channel_post(thread_id=\"{threadId}\", type=\"note\", body=...), then stop. Do not explore files.",
           "task": "You have been woken for the thread \"{thread.title}\" ({thread.kind}, thread_id {threadId}). Follow the bootstrap instructions above, then do the work. Post your results to thread_id {threadId} with the hivemind MCP tools before you finish.",
-          "note": "Note: on this client the Hivemind MCP tools are named with underscores — channel_post, channel_read, channel_inbox, memory_search, memory_propose, and so on — wherever the instructions above write them with dots."
+          "note": "Note: on this client the Presidium MCP tools are named with underscores — channel_post, channel_read, channel_inbox, memory_search, memory_propose, and so on — wherever the instructions above write them with dots."
         },
         "mcp": {
           "toolNames": "underscore",
@@ -1555,7 +1555,7 @@
           ],
           "display": "curl -LsSf https://aider.chat/install.sh | sh"
         },
-        "postInstall": "Set an API key (OPENAI_API_KEY / ANTHROPIC_API_KEY) in the environment Hivemind's daemon runs in, then Connect here.",
+        "postInstall": "Set an API key (OPENAI_API_KEY / ANTHROPIC_API_KEY) in the environment Presidium's daemon runs in, then Connect here.",
         "homepage": "https://aider.chat"
       },
       "goodAt": [
@@ -1564,7 +1564,7 @@
         "budget"
       ],
       "verified": false,
-      "blurb": "Open-source, git-native pair programmer for any model via API key. No MCP: it edits files and Hivemind posts its final answer for it.",
+      "blurb": "Open-source, git-native pair programmer for any model via API key. No MCP: it edits files and Presidium posts its final answer for it.",
       "kind": "manifest",
       "invoke": {
         "command": "aider",
@@ -1590,8 +1590,8 @@
         "env": {},
         "prompt": {
           "bootstrap": "inline",
-          "chat": "Someone mentioned you in the thread \"{thread.title}\". You have no Hivemind tools on this client: write your reply as your final answer, plainly, and Hivemind will post it to the thread for you. Reply like a teammate, once.",
-          "task": "You have been woken for the thread \"{thread.title}\" ({thread.kind}). You have no Hivemind tools on this client: do the work in the files, then end with a short summary of what you changed — Hivemind posts that summary to the thread for you."
+          "chat": "Someone mentioned you in the thread \"{thread.title}\". You have no Presidium tools on this client: write your reply as your final answer, plainly, and Presidium will post it to the thread for you. Reply like a teammate, once.",
+          "task": "You have been woken for the thread \"{thread.title}\" ({thread.kind}). You have no Presidium tools on this client: do the work in the files, then end with a short summary of what you changed — Presidium posts that summary to the thread for you."
         },
         "mcp": {
           "toolNames": "dot",
@@ -1721,7 +1721,7 @@
           "bootstrap": "inline",
           "chat": "Someone mentioned you in the thread \"{thread.title}\" (thread_id {threadId}). Reply there like a teammate, once, with channel_post(thread_id=\"{threadId}\", type=\"note\", body=...), then stop.",
           "task": "You have been woken for the thread \"{thread.title}\" ({thread.kind}, thread_id {threadId}). Follow the bootstrap instructions above, then do the work. Post your results to thread_id {threadId} with the hivemind MCP tools before you finish.",
-          "note": "Note: on this client the Hivemind MCP tools are named with underscores (channel_post, channel_read, channel_inbox, memory_search, memory_propose, …), shown as mcp__hivemind__<tool>, wherever the instructions above write them with dots."
+          "note": "Note: on this client the Presidium MCP tools are named with underscores (channel_post, channel_read, channel_inbox, memory_search, memory_propose, …), shown as mcp__hivemind__<tool>, wherever the instructions above write them with dots."
         },
         "mcp": {
           "toolNames": "underscore",
@@ -1882,7 +1882,7 @@
           "bootstrap": "inline",
           "chat": "Someone mentioned you in the thread \"{thread.title}\" (thread_id {threadId}). Reply there like a teammate, once, with channel_post(thread_id=\"{threadId}\", type=\"note\", body=...), then stop.",
           "task": "You have been woken for the thread \"{thread.title}\" ({thread.kind}, thread_id {threadId}). Follow the bootstrap instructions above, then do the work. Post your results to thread_id {threadId} with the hivemind MCP tools before you finish.",
-          "note": "Note: on this client the Hivemind MCP tools are named with underscores (channel_post, channel_read, channel_inbox, memory_search, memory_propose, …), shown as <tool>_hivemind, wherever the instructions above write them with dots."
+          "note": "Note: on this client the Presidium MCP tools are named with underscores (channel_post, channel_read, channel_inbox, memory_search, memory_propose, …), shown as <tool>_hivemind, wherever the instructions above write them with dots."
         },
         "mcp": {
           "toolNames": "underscore",
@@ -2038,7 +2038,7 @@
           "bootstrap": "inline",
           "chat": "Someone mentioned you in the thread \"{thread.title}\" (thread_id {threadId}). Reply there like a teammate, once, with channel_post(thread_id=\"{threadId}\", type=\"note\", body=...), then stop.",
           "task": "You have been woken for the thread \"{thread.title}\" ({thread.kind}, thread_id {threadId}). Follow the bootstrap instructions above, then do the work. Post your results to thread_id {threadId} with the hivemind MCP tools before you finish.",
-          "note": "Note: on this client the Hivemind MCP tools are named with underscores (channel_post, channel_read, channel_inbox, memory_search, memory_propose, …) wherever the instructions above write them with dots."
+          "note": "Note: on this client the Presidium MCP tools are named with underscores (channel_post, channel_read, channel_inbox, memory_search, memory_propose, …) wherever the instructions above write them with dots."
         },
         "mcp": {
           "toolNames": "underscore",
@@ -2160,7 +2160,7 @@
           "bootstrap": "inline",
           "chat": "Someone mentioned you in the thread \"{thread.title}\" (thread_id {threadId}). Reply there like a teammate, once, with channel_post(thread_id=\"{threadId}\", type=\"note\", body=...), then stop.",
           "task": "You have been woken for the thread \"{thread.title}\" ({thread.kind}, thread_id {threadId}). Follow the bootstrap instructions above, then do the work. Post your results to thread_id {threadId} with the hivemind MCP tools before you finish.",
-          "note": "Note: on this client the Hivemind MCP tools are named with underscores (channel_post, channel_read, channel_inbox, memory_search, memory_propose, …), shown as mcp_hivemind_<tool>, wherever the instructions above write them with dots."
+          "note": "Note: on this client the Presidium MCP tools are named with underscores (channel_post, channel_read, channel_inbox, memory_search, memory_propose, …), shown as mcp_hivemind_<tool>, wherever the instructions above write them with dots."
         },
         "mcp": {
           "toolNames": "underscore",
@@ -2301,7 +2301,7 @@
           "bootstrap": "inline",
           "chat": "Someone mentioned you in the thread \"{thread.title}\" (thread_id {threadId}). Reply there like a teammate, once, with channel_post(thread_id=\"{threadId}\", type=\"note\", body=...), then stop.",
           "task": "You have been woken for the thread \"{thread.title}\" ({thread.kind}, thread_id {threadId}). Follow the bootstrap instructions above, then do the work. Post your results to thread_id {threadId} with the hivemind MCP tools before you finish.",
-          "note": "Note: on this client the Hivemind MCP tools are named with underscores (channel_post, channel_read, channel_inbox, memory_search, memory_propose, …), shown as mcp__hivemind__<tool>, wherever the instructions above write them with dots."
+          "note": "Note: on this client the Presidium MCP tools are named with underscores (channel_post, channel_read, channel_inbox, memory_search, memory_propose, …), shown as mcp__hivemind__<tool>, wherever the instructions above write them with dots."
         },
         "mcp": {
           "toolNames": "underscore",
@@ -2434,7 +2434,7 @@
           "bootstrap": "inline",
           "chat": "Someone mentioned you in the thread \"{thread.title}\" (thread_id {threadId}). Reply there like a teammate, once, with channel_post(thread_id=\"{threadId}\", type=\"note\", body=...), then stop.",
           "task": "You have been woken for the thread \"{thread.title}\" ({thread.kind}, thread_id {threadId}). Follow the bootstrap instructions above, then do the work. Post your results to thread_id {threadId} with the hivemind MCP tools before you finish.",
-          "note": "Note: on this client the Hivemind MCP tools are named with underscores (channel_post, channel_read, channel_inbox, memory_search, memory_propose, …), shown as hivemind__<tool>, wherever the instructions above write them with dots."
+          "note": "Note: on this client the Presidium MCP tools are named with underscores (channel_post, channel_read, channel_inbox, memory_search, memory_propose, …), shown as hivemind__<tool>, wherever the instructions above write them with dots."
         },
         "mcp": {
           "toolNames": "underscore",
@@ -2561,7 +2561,7 @@
           "bootstrap": "inline",
           "chat": "Someone mentioned you in the thread \"{thread.title}\" (thread_id {threadId}). Reply there like a teammate, once, with channel_post(thread_id=\"{threadId}\", type=\"note\", body=...), then stop.",
           "task": "You have been woken for the thread \"{thread.title}\" ({thread.kind}, thread_id {threadId}). Follow the bootstrap instructions above, then do the work. Post your results to thread_id {threadId} with the hivemind MCP tools before you finish.",
-          "note": "Note: on this client the Hivemind MCP tools are named with underscores (channel_post, channel_read, channel_inbox, memory_search, memory_propose, …), reachable as @hivemind/<tool>, wherever the instructions above write them with dots."
+          "note": "Note: on this client the Presidium MCP tools are named with underscores (channel_post, channel_read, channel_inbox, memory_search, memory_propose, …), reachable as @hivemind/<tool>, wherever the instructions above write them with dots."
         },
         "mcp": {
           "toolNames": "underscore",
@@ -2713,7 +2713,7 @@
           "bootstrap": "inline",
           "chat": "Someone mentioned you in the thread \"{thread.title}\" (thread_id {threadId}). Reply there like a teammate, once, with channel_post(thread_id=\"{threadId}\", type=\"note\", body=...), then stop.",
           "task": "You have been woken for the thread \"{thread.title}\" ({thread.kind}, thread_id {threadId}). Follow the bootstrap instructions above, then do the work. Post your results to thread_id {threadId} with the hivemind MCP tools before you finish.",
-          "note": "Note: on this client the Hivemind MCP tools are named with underscores (channel_post, channel_read, channel_inbox, memory_search, memory_propose, …), shown as hivemind_<tool>, wherever the instructions above write them with dots."
+          "note": "Note: on this client the Presidium MCP tools are named with underscores (channel_post, channel_read, channel_inbox, memory_search, memory_propose, …), shown as hivemind_<tool>, wherever the instructions above write them with dots."
         },
         "mcp": {
           "toolNames": "underscore",
@@ -2885,7 +2885,7 @@
           "bootstrap": "inline",
           "chat": "Someone mentioned you in the thread \"{thread.title}\" (thread_id {threadId}). Reply there like a teammate, once, with channel_post(thread_id=\"{threadId}\", type=\"note\", body=...), then stop.",
           "task": "You have been woken for the thread \"{thread.title}\" ({thread.kind}, thread_id {threadId}). Follow the bootstrap instructions above, then do the work. Post your results to thread_id {threadId} with the hivemind MCP tools before you finish.",
-          "note": "Note: on this client the Hivemind MCP tools are named with underscores (channel_post, channel_read, channel_inbox, memory_search, memory_propose, …), shown as mcp__hivemind__<tool>, wherever the instructions above write them with dots."
+          "note": "Note: on this client the Presidium MCP tools are named with underscores (channel_post, channel_read, channel_inbox, memory_search, memory_propose, …), shown as mcp__hivemind__<tool>, wherever the instructions above write them with dots."
         },
         "mcp": {
           "toolNames": "underscore",
