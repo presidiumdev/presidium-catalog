@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2026-10-19T04:06:22.457Z",
+  "generated_at": "2026-10-19T06:14:18.796Z",
   "applications": [
     {
       "id": "atlassian",
@@ -526,7 +526,7 @@
       ],
       "secrets": [],
       "managedTool": "imagestudio",
-      "version": "0.3.8",
+      "version": "0.3.9",
       "docs": "https://github.com/presidiumdev/presidium-imagestudio",
       "auth": "none",
       "writes": "writes finished images into its own output folder; downloads models only with your consent"
