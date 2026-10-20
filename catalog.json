@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2026-10-19T06:31:55.748Z",
+  "generated_at": "2026-10-20T11:28:43.985Z",
   "applications": [
     {
       "id": "atlassian",
@@ -316,6 +316,29 @@
       ]
     },
     {
+      "id": "shapestudio",
+      "name": "Presidium Shape Studio",
+      "description": "Free, local image-to-3D on your own machine (TripoSR on a CPU or any NVIDIA card, TRELLIS on 16 GB+ NVIDIA; permissive licences only). A picture in, a textured mesh out (GLB, OBJ) with a turntable preview; the fit is shown before you commit. Settings → Tools installs it; website: https://presidiumdev.github.io/presidium-shapestudio/.",
+      "category": "design",
+      "docs": "https://github.com/presidiumdev/presidium-shapestudio",
+      "uses": [
+        "tools"
+      ],
+      "mechanisms": [
+        {
+          "id": "mcp",
+          "kind": "mcp",
+          "label": "MCP server on this machine",
+          "runs": "here",
+          "auth": "none",
+          "trust": "community",
+          "comingSoon": false,
+          "catalogId": "shapestudio",
+          "docs": "https://github.com/presidiumdev/presidium-shapestudio"
+        }
+      ]
+    },
+    {
       "id": "sentry",
       "name": "Sentry",
       "description": "Errors, issues and performance data from Sentry (hosted server, signs in through the browser).",
@@ -530,6 +553,23 @@
       "docs": "https://github.com/presidiumdev/presidium-imagestudio",
       "auth": "none",
       "writes": "writes finished images into its own output folder; downloads models only with your consent"
+    },
+    {
+      "id": "shapestudio",
+      "name": "Presidium Shape Studio",
+      "description": "Free, local image-to-3D on your own machine (TripoSR on a CPU or any NVIDIA card, TRELLIS on 16 GB+ NVIDIA; permissive licences only). A picture in, a textured mesh out (GLB, OBJ) with a turntable preview; the fit is shown before you commit. Settings → Tools installs it; website: https://presidiumdev.github.io/presidium-shapestudio/.",
+      "category": "design",
+      "transport": "stdio",
+      "command": "shapestudio",
+      "args": [
+        "serve"
+      ],
+      "secrets": [],
+      "managedTool": "shapestudio",
+      "version": "0.1.4",
+      "docs": "https://github.com/presidiumdev/presidium-shapestudio",
+      "auth": "none",
+      "writes": "writes finished meshes and previews into its own output folder; downloads models only with your consent"
     },
     {
       "id": "filesystem",
