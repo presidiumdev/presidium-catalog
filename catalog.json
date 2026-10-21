@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2026-10-20T11:28:43.985Z",
+  "generated_at": "2026-10-21T09:49:50.535Z",
   "applications": [
     {
       "id": "atlassian",
@@ -566,7 +566,7 @@
       ],
       "secrets": [],
       "managedTool": "shapestudio",
-      "version": "0.1.4",
+      "version": "0.1.5",
       "docs": "https://github.com/presidiumdev/presidium-shapestudio",
       "auth": "none",
       "writes": "writes finished meshes and previews into its own output folder; downloads models only with your consent"
